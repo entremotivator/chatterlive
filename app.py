@@ -9,11 +9,13 @@ input_url = st.text_input("Enter the URL with the unique identifier:", "https://
 if input_url:
     # Extract the unique identifier from the input URL
     try:
+        # Split the URL to find the unique identifier
         unique_id = input_url.split("/rooms/")[1]
+        
         # Combine the base URL with the unique identifier
         new_url = base_url + unique_id
-
+        
         # Display the new URL
         st.write("New URL:", new_url)
-    except IndexError:
+    except (IndexError, AttributeError):
         st.error("Invalid URL format. Please enter a valid URL.")
