@@ -10,15 +10,22 @@ def generate_new_url(input_url):
         new_url = base_url + unique_id
         return new_url
     except IndexError:
-        return "Invalid URL format. Please enter a valid URL."
+        return None
+
+# App title
+st.title("URL Generator")
+
+# Instructions
+st.write("Enter the URL with the unique identifier to generate the new URL:")
 
 # Text input for the URL with unique identifier
-input_url = st.text_input("Enter the URL with the unique identifier:", key="input_url")
+input_url = st.text_input("URL with Unique Identifier", placeholder="https://www.chattersocial.io/rooms/db2b9be8-ea26-471c-8f60-06aa7a8bf7e1")
 
-# Display the new URL if input is valid
-if input_url:
+# Button to generate the new URL
+if st.button("Enter"):
     new_url = generate_new_url(input_url)
-    if new_url.startswith("Invalid"):
-        st.error(new_url)
+    if new_url:
+        st.success("New URL Generated:")
+        st.write(new_url)
     else:
-        st.write("New URL:", new_url)
+        st.error("Invalid URL format. Please enter a valid URL.")
