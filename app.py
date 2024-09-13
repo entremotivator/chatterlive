@@ -3,14 +3,13 @@ import streamlit as st
 # Base URL
 base_url = "https://desktop.chattersocial.io/rooms/"
 
-# Function to extract unique identifier and generate new URL
+# Function to modify /room/ to /rooms/ and generate new URL
 def generate_new_url(input_url):
-    try:
-        unique_id = input_url.split("/rooms/")[1]
-        new_url = base_url + unique_id
+    if "/room/" in input_url:
+        # Replace /room/ with /rooms/
+        new_url = input_url.replace("/room/", "/rooms/")
         return new_url
-    except IndexError:
-        return None
+    return None
 
 # App title
 st.title("URL Generator")
@@ -19,7 +18,7 @@ st.title("URL Generator")
 st.write("Enter the URL with the unique identifier to generate the new URL:")
 
 # Text input for the URL with unique identifier
-input_url = st.text_input("URL with Unique Identifier", placeholder="https://www.chattersocial.io/rooms/db2b9be8-ea26-471c-8f60-06aa7a8bf7e1")
+input_url = st.text_input("URL with Unique Identifier", placeholder="https://www.chattersocial.io/room/db2b9be8-ea26-471c-8f60-06aa7a8bf7e1")
 
 # Button to generate the new URL
 if st.button("Enter"):
