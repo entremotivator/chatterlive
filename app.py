@@ -1,13 +1,15 @@
 import streamlit as st
 
-# Base URL
+# Base URL for the final link
 base_url = "https://desktop.chattersocial.io/rooms/"
 
 # Function to modify /room/ to /rooms/ and generate new URL
 def generate_new_url(input_url):
     if "/room/" in input_url:
-        # Replace /room/ with /rooms/
-        new_url = input_url.replace("/room/", "/rooms/")
+        # Extract the unique identifier from the URL
+        unique_id = input_url.split("/room/")[1]
+        # Combine with the new base URL
+        new_url = base_url + unique_id
         return new_url
     return None
 
