@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Base URL
-base_url = "https://dev-web.chattersocial.io/rooms/"
+base_url = "https://desktop.chattersocial.io/rooms/"
 
 # Function to extract unique identifier and generate new URL
 def generate_new_url(input_url):
